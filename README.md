@@ -17,7 +17,7 @@ events context-dependent. The *Stopper* plugin addresses this problem by:
 - Providing a convenient `showStopper` function to be used instead of `showBottomSheet` in 
   order to handle the dismissal of bottom sheet by the user.
 
-![animated image](https://github.com/aryzhov/flutter-stopper/blob/master/docs/stopper_demo.mp4?raw=true)     
+![animated image](https://github.com/aryzhov/flutter-stopper/blob/master/docs/stopper_demo.gif?raw=true)     
 
 ## Example
 
