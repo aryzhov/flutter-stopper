@@ -33,13 +33,14 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("Show Stopper"),
               onPressed: () {
                 showStopper(
+                  context: context,
                   stops: [0.4 * h, h],
                   builder: (context, scrollController, scrollPhysics, stop) {
                     return ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: stop == 0 ? BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10),
-                      ),
+                      ): BorderRadius.only(),
                       clipBehavior: Clip.antiAlias,
                       child: Container(
                         color: Colors.orange,

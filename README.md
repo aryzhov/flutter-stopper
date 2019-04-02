@@ -17,6 +17,8 @@ events context-dependent. The *Stopper* plugin addresses this problem by:
 - Providing a convenient `showStopper` function to be used instead of `showBottomSheet` in 
   order to handle the dismissal of bottom sheet by the user.
 
+![animated image](https://github.com/aryzhov/flutter-stopper/blob/master/docs/stopper_demo.mp4?raw=true)     
+
 ## Example
 
 ```dart
@@ -28,6 +30,7 @@ MaterialButton(
   child: Text("Show Stopper"),
   onPressed: () {
     showStopper(
+      context: context,
       stops: [0.5 * height, height],
       builder: (context, scrollController, scrollPhysics, stop) {
         return ListView(

@@ -206,6 +206,8 @@ class MyScrollPhysics extends ScrollPhysics {
 Future showStopper({
     Key key,
     @required
+    BuildContext context,
+    @required
     StopperBuilder builder,
     @required
     List<double> stops,
@@ -214,6 +216,7 @@ Future showStopper({
   }) {
     PersistentBottomSheetController cont;
     cont = showBottomSheet(
+      context: context,
       builder: (context) {
         return Stopper(
           key: key, builder: builder, stops: stops, initialStop: initialStop, dragThreshold: dragThreshold,
