@@ -1,6 +1,6 @@
 # Stopper
 
-A bottom sheet that can be expanded to one of pre-defined stop heights by dragging.
+A bottom sheet that can be expanded to one of the pre-defined stop heights by dragging.
 
 ![animated image](https://github.com/aryzhov/flutter-stopper/blob/master/docs/stopper_demo.gif?raw=true)     
 
