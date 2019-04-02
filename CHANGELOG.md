@@ -1,3 +1,4 @@
-## [0.9.9] - Initial commit
+## [1.0.0] - 04/02/2019
 
-* TODO: Describe initial release.
+* Initial release.
+

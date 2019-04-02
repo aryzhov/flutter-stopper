@@ -2,7 +2,7 @@
 
 A bottom sheet that can be expanded to one of the pre-defined stop heights by dragging.
 
-![animated image](https://github.com/aryzhov/flutter-stopper/blob/master/docs/stopper_demo.gif?raw=true)     
+![animated image](https://github.com/aryzhov/flutter-stopper/blob/master/doc/stopper_demo.gif?raw=true)     
 
 ## Introduction
 
@@ -28,9 +28,9 @@ easy to maintain.
 
 ```dart
 import 'package:stopper/stopper.dart';
-///...
+//...
 final height = MediaQuery.of(context).size.height;
-///...
+//...
 MaterialButton(
   child: Text("Show Stopper"),
   onPressed: () {
@@ -42,7 +42,7 @@ MaterialButton(
           controller: scrollController,
           physics: scrollPhysics,
           children: [
-            ///...
+            //...
           ]
         );
       }
