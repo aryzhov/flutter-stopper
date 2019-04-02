@@ -2,6 +2,8 @@
 
 A bottom sheet that can be expanded to one of pre-defined stop heights by dragging.
 
+![animated image](https://github.com/aryzhov/flutter-stopper/blob/master/docs/stopper_demo.gif?raw=true)     
+
 ## Introduction
 
 Some iOS applications have a bottom sheet that has two states: half-expanded and fully expanded.
@@ -16,8 +18,6 @@ events context-dependent. The *Stopper* plugin addresses this problem by:
 - Using animations to make transitions of the bottom sheet between the stops look natural;
 - Providing a convenient `showStopper` function to be used instead of `showBottomSheet` in 
   order to handle the dismissal of bottom sheet by the user.
-
-![animated image](https://github.com/aryzhov/flutter-stopper/blob/master/docs/stopper_demo.gif?raw=true)     
 
 ## Example
 
