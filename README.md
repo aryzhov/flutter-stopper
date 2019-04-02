@@ -9,15 +9,20 @@ A bottom sheet that can be expanded to one of the pre-defined stop heights by dr
 Some iOS applications have a bottom sheet that has two states: half-expanded and fully expanded.
 The standard `showBottomSheet` method lacks such a capability. A complication in implementing this 
 behavior arises if the the bottom sheet is scrollable, making scroll and drag 
-events context-dependent. The *Stopper* plugin addresses this problem by:
+event handling difficult as they are consumed by the underlying scroll view. 
+The *Stopper* plugin addresses this problem by:
 
 - Letting the developer define discreet height values (stops) to which the bottom sheet can be expanded;
 - Using the builder design pattern to build the bottom sheet, depending on the current stop value;
-- Passing `ScrollController` and `ScrollPhysics` objects that can be passed to a scrollable view
-  inside the bottom sheet;
+- Instantiating `ScrollController` and `ScrollPhysics` objects and passing them to the 
+  bottom sheet builder;
 - Using animations to make transitions of the bottom sheet between the stops look natural;
 - Providing a convenient `showStopper` function to be used instead of `showBottomSheet` in 
   order to handle the dismissal of bottom sheet by the user.
+
+This plugin utilizes the bottom sheet functionality from the `Scaffold`
+widget and avoids copy/paste from the standard library, making the implementation clear and
+easy to maintain.
 
 ## Example
 
