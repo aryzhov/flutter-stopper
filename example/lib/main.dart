@@ -32,49 +32,44 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.green,
               child: Text("Show Stopper"),
               onPressed: () {
-                PersistentBottomSheetController contr;
-                contr = showBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return Stopper(
-                      stops: [0.4 * h, h],
-                      builder: (context, scrollController, scrollPhysics, stop) {
-                        return ClipRRect(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                          ),
-                          clipBehavior: Clip.antiAlias,
-                          child: Container(
-                            color: Colors.orange,
-                            child: CustomScrollView(
-                              slivers: <Widget>[
-                                SliverAppBar(
-                                  title: Text("What's Up"),
-                                  backgroundColor: Colors.orange,
-                                  automaticallyImplyLeading: false,
-                                  primary: false,
-                                  floating: true,
-                                  pinned: true,
-                                ),
-                                SliverList(
-                                  delegate: SliverChildBuilderDelegate(
-                                    (context, idx) => ListTile(
-                                        title: Text("Not much"),
-                                        subtitle: Text("$idx"),
-                                    ),
-                                    childCount: 100,
-                                  ),
-                                )
-                              ],
-                              controller: scrollController,
-                              physics: scrollPhysics,
+                showStopper(
+                  stops: [0.4 * h, h],
+                  builder: (context, scrollController, scrollPhysics, stop) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: Container(
+                        color: Colors.orange,
+                        child: CustomScrollView(
+                          slivers: <Widget>[
+                            SliverAppBar(
+                              title: Text("What's Up?"),
+                              backgroundColor: Colors.orange,
+                              automaticallyImplyLeading: false,
+                              primary: false,
+                              floating: true,
+                              pinned: true,
                             ),
-                          ),
-                        );
-                      },
-                      onClose: () => contr.close(),);
-                });
+                            SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                (context, idx) => ListTile(
+                                    title: Text("Nothing much"),
+                                    subtitle: Text("$idx"),
+                                ),
+                                childCount: 100,
+                              ),
+                            )
+                          ],
+                          controller: scrollController,
+                          physics: scrollPhysics,
+                        ),
+                      ),
+                    );
+                  },
+                );
               },
             )
           );

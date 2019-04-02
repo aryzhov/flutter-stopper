@@ -78,6 +78,14 @@ class StopperState extends State<Stopper> with SingleTickerProviderStateMixin {
     });
   }
 
+  @override
+  void didUpdateWidget(Stopper oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    this._stops = widget.stops;
+    this._currentStop = min(_currentStop, _stops.length-1);
+    this._targetStop = min(_currentStop, _stops.length-1);
+  }
+
   get stop => _currentStop;
   set stop(nextStop) {
     _targetStop = nextStop;
@@ -195,3 +203,25 @@ class MyScrollPhysics extends ScrollPhysics {
 
 }
 
+Future showStopper({
+    Key key,
+    @required
+    StopperBuilder builder,
+    @required
+    List<double> stops,
+    int initialStop = 0,
+    double dragThreshold = 25
+  }) {
+    PersistentBottomSheetController cont;
+    cont = showBottomSheet(
+      builder: (context) {
+        return Stopper(
+          key: key, builder: builder, stops: stops, initialStop: initialStop, dragThreshold: dragThreshold,
+          onClose: () {
+            cont.close();
+          },
+        );
+      },
+    );
+    return cont.closed;
+}
