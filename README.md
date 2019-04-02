@@ -19,7 +19,7 @@ scroll position. The *Stopper* plugin addresses this problem by:
   bottom sheet builder;
 - Using animations to make transitions of the bottom sheet between the stops look natural;
 - Providing a convenient `showStopper` function to be used instead of `showBottomSheet` in 
-  order to handle the dismissal of the bottom sheet by the user.
+  order to handle dismissal of the bottom sheet by the user.
 
 This plugin utilizes bottom sheet functionality from the `Scaffold`
 widget and avoids copy/paste from the standard library, making the implementation clear and

@@ -101,6 +101,13 @@ class StopperState extends State<Stopper> with SingleTickerProviderStateMixin {
     this._targetStop = min(_currentStop, _stops.length - 1);
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _animationController.dispose();
+    _scrollController.dispose();
+  }
+
   /// The current stop value. The value changes after the stop change animation is complete.
   get stop => _currentStop;
 
