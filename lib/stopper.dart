@@ -1,4 +1,4 @@
-library stepper;
+library stopper;
 
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -18,25 +18,24 @@ typedef Widget StopperBuilder(
 /// A widget that changes its height to one of the predefined values based on user-initiated dragging.
 /// Designed to be used with [showBottomSheet()] method.
 class Stopper extends StatefulWidget {
+    /// The list of stop heights in logical pixels. The values must be sorted from lowest to highest.
   final List<double> stops;
+    /// This callback function is called when the user triggers a close. If null, the bottom sheet cannot be closed by the user.
   final Function onClose;
+    /// A builder to build the contents of the bottom sheet.
   final StopperBuilder builder;
+    /// The initial stop.
   final int initialStop;
+    /// The minimum offset (in logical pixels) necessary to trigger a stop change when dragging.
   final double dragThreshold;
 
   /// The constructor.
   Stopper({
-    /// An optional key
-    Key key, 
-    /// A builder to build the contents of the bottom sheet.
-    @required this.builder, 
-    /// The list of stop heights in logical pixels. The values must be sorted from lowest to highest.
+    Key key,
+    @required this.builder,
     @required this.stops,
-    /// The initial stop.
     this.initialStop = 0,
-    /// This callback function is called when the user triggers a close. If null, the bottom sheet cannot be closed by the user.
     this.onClose,
-    /// The minimum offset (in logical pixels) necessary to trigger a stop change when dragging.
     this.dragThreshold = 25
   })
       : assert(initialStop < stops.length),
