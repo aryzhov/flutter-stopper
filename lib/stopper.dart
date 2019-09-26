@@ -248,8 +248,8 @@ PersistentBottomSheetController showStopper(
   return cont;
 }
 
-/// Shows the Stopper bottom sheet.
-/// Returns a [PersistentBottomSheetController] that can be used
+/// Shows the Stopper modal bottom sheet.
+/// Returns a [Future] that can be used
 Future showModalStopper(
     {
       /// The key of the [Stopper] widget
