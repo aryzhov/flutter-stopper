@@ -270,10 +270,12 @@ Future showModalStopper(
       /// The desidered shape
       ShapeBorder shape = null,
       /// Required for modal bottomSheet
-      bool isScrollController = true
+      bool isScrollController = true,
     }) {
   Future cont;
+
   cont = showModalBottomSheet(
+    backgroundColor: Theme.of(context).backgroundColor,
     shape: shape,
     isScrollControlled: true,
     context: context,
