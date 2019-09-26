@@ -28,6 +28,8 @@ class Stopper extends StatefulWidget {
   final int initialStop;
     /// The minimum offset (in logical pixels) necessary to trigger a stop change when dragging.
   final double dragThreshold;
+    /// THe desidered shape
+  final ShapeBorder shape;
 
   /// The constructor.
   Stopper({
@@ -36,7 +38,8 @@ class Stopper extends StatefulWidget {
     @required this.stops,
     this.initialStop = 0,
     this.onClose,
-    this.dragThreshold = 25
+    this.dragThreshold = 25,
+    this.shape = null
   })
       : assert(initialStop < stops.length),
         super(key: key);
@@ -219,13 +222,18 @@ PersistentBottomSheetController showStopper(
     /// If [true] then the user can close the bottom sheet dragging it down from the lowest stop. 
     bool userCanClose = true,
     /// The minimum offset (in logical pixels) to trigger a stop change when dragging.
-    double dragThreshold = 25
+    double dragThreshold = 25,
+    /// The desidered shape
+    ShapeBorder shape = null,
+    /// Required for modal bottomSheet
+    bool isScrollController = true
     }) {
   PersistentBottomSheetController cont;
   cont = showBottomSheet(
     context: context,
     builder: (context) {
       return Stopper(
+        shape: shape,
         key: key,
         builder: builder,
         stops: stops,
@@ -234,6 +242,52 @@ PersistentBottomSheetController showStopper(
         onClose: userCanClose ? () {
           cont.close();
         }: null,
+      );
+    },
+  );
+  return cont;
+}
+
+/// Shows the Stopper bottom sheet.
+/// Returns a [PersistentBottomSheetController] that can be used
+Future showModalStopper(
+    {
+      /// The key of the [Stopper] widget
+      Key key,
+      /// The build context
+      @required BuildContext context,
+      /// The builder of the bottom sheet
+      @required StopperBuilder builder,
+      /// The list of stop heights as logical pixel values. Use [MediaQuery] to compute the heights relative to screen height.
+      /// The order of the stop heights must be from the lowest to the highest.
+      @required List<double> stops,
+      /// The initial stop number.
+      int initialStop = 0,
+      /// If [true] then the user can close the bottom sheet dragging it down from the lowest stop.
+      bool userCanClose = true,
+      /// The minimum offset (in logical pixels) to trigger a stop change when dragging.
+      double dragThreshold = 25,
+      /// The desidered shape
+      ShapeBorder shape = null,
+      /// Required for modal bottomSheet
+      bool isScrollController = true
+    }) {
+  Future cont;
+  cont = showModalBottomSheet(
+    shape: shape,
+    isScrollControlled: true,
+    context: context,
+    builder: (context) {
+      return Stopper(
+        shape: shape,
+        key: key,
+        builder: builder,
+        stops: stops,
+        initialStop: initialStop,
+        dragThreshold: dragThreshold,
+//        onClose: userCanClose ? () {
+//          cont.close();
+//        }: null,
       );
     },
   );
